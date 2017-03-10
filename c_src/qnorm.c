@@ -151,7 +151,11 @@ double qnorm5(double p, double mu, double sigma, int lower_tail, int log_p)
 }
 
 static ERL_NIF_TERM qnorm_nif(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[]){
-  return enif_make_double(env, qnorm5(argv[0], 0.0, 1.0, 1, 0));
+  double percent;
+  if (!enif_get_double(env, argv[0], &percent)) {
+    return enif_make_badarg(env);
+  }
+  return enif_make_double(env, qnorm5(percent, 0.0, 1.0, 1, 0));
 }
 static ErlNifFunc nif_funcs[] = {
     {"qnorm_nif", 1, qnorm_nif}
