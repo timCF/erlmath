@@ -1,0 +1,12 @@
+{application, erlmath,
+ [
+  {description, ""},
+  {vsn, "1"},
+  {registered, []},
+  {applications, [
+                  kernel,
+                  stdlib
+                 ]},
+  {mod, { erlmath_app, []}},
+  {env, []}
+ ]}.
