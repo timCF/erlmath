@@ -154,6 +154,6 @@ static ERL_NIF_TERM qnorm_nif(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[
   return enif_make_double(env, qnorm5(argv[0], 0.0, 1.0, 1, 0));
 }
 static ErlNifFunc nif_funcs[] = {
-    {"qnorm_nif", 5, qnorm_nif}
+    {"qnorm_nif", 1, qnorm_nif}
 };
 ERL_NIF_INIT(erlmath, nif_funcs, NULL, NULL, NULL, NULL)
