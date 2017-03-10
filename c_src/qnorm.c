@@ -1,3 +1,5 @@
+#include "erl_nif.h"
+
 /*
  *  Mathlib : A C Library of Special Functions
  *  Copyright (C) 1998       Ross Ihaka
@@ -148,5 +150,10 @@ double qnorm5(double p, double mu, double sigma, int lower_tail, int log_p)
     return mu + sigma * val;
 }
 
-
-
+static ERL_NIF_TERM qnorm_nif(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[]){
+  return enif_make_double(qnorm5(argv[0]));
+}
+static ErlNifFunc nif_funcs[] = {
+    {"qnorm_nif", 5, qnorm_nif}
+};
+ERL_NIF_INIT(erlmath, nif_funcs, NULL, NULL, NULL, NULL)
